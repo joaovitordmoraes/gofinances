@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import * as SplashScreen from 'expo-splash-screen'
 import { ThemeProvider } from 'styled-components'
 
@@ -11,6 +11,7 @@ import {
 
 import theme from './src/global/styles/theme'
 import { Register } from './src/screens/Register'
+import loadExpoEmbed from './src/utils/loadExpoEmbed'
 
 export default function App() {
   SplashScreen.preventAutoHideAsync()
@@ -19,10 +20,15 @@ export default function App() {
     Poppins_500Medium,
     Poppins_700Bold
   })
+  const [loaded, setLoaded] = useState(false);
 
   if (!fontsLoaded) {
     return null
   }
+
+  useEffect(() => {
+    loadExpoEmbed(true);
+  }, [])
 
   SplashScreen.hideAsync()
 

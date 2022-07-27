@@ -9,7 +9,7 @@ interface Props extends TouchableOpacityProps {
 
 export const Button = ({ title, ...rest }: Props) => {
   return (
-    <S.Container {...rest}>
+    <S.Container {...rest} data-snack-id="form/button">
       <S.Title>{title}</S.Title>
     </S.Container>
   )
